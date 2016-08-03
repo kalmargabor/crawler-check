@@ -1,0 +1,17 @@
+{
+  "name": "kalmargabor/crawler-check",
+  "description": "Verify Googlebot (or others) by their IP addresses",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gabor Kalmar",
+      "email": "kalmargabor26@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Kalmargabor\\": "src/"
+    }
+  }
+}
