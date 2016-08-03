@@ -1,7 +1,7 @@
 # Install
 ## Composer
 
-require kalmargabor/crawler-check
+composer require kalmargabor/crawler-check
 
 # Examples
 
