@@ -5,7 +5,7 @@ namespace Kalmargabor\CrawlerCheck;
 /**
  * Verify Googlebot (or others) by their IP addresses
  *
- * @version 1.0
+ * @version 1.0.1
  * @link https://github.com/kalmargabor/crawler-check
  * @author kalmargabor (Gabor Kalmar)
  * @license https://opensource.org/licenses/MIT The MIT License (MIT)
@@ -15,7 +15,7 @@ class CrawlerCheck
     /**
      * @var array the hosts that are used to validate the examined IP addresses
      */
-    protected $validHosts = ['google.com', 'googlebot.com'];
+    protected $validHosts = ['.google.com', '.googlebot.com'];
 
     /**
      * Checks whether the given IP address really belongs to a valid host or not
@@ -33,9 +33,19 @@ class CrawlerCheck
         $ipAfterLookup = gethostbyname($host);
 
         $hostIsValid = !!array_filter($this->validHosts, function ($validHost) use ($host) {
-            return stristr($host, $validHost) !== false;
+            return $this->endsWith($host, $validHost);
         });
 
         return $hostIsValid && $ipAfterLookup === $ip;
+    }
+
+    /**
+     * @param $text the whole string we want to check if it ends with $ending
+     * @param $ending
+     * @return bool true if $text ends with $ending
+     */
+    protected function endsWith($text, $ending)
+    {
+        return !!(strpos($text, $ending) + strlen($ending) === strlen($text));
     }
 }
