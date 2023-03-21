@@ -20,7 +20,7 @@ class CrawlerCheck
     /**
      * Checks whether the given IP address really belongs to a valid host or not
      *
-     * @param $ip the IP address to check
+     * @param $ip string the IP address to check
      * @return bool true if the given IP address belongs to any of the valid hosts, otherwise false
      */
     public function isValid($ip)
